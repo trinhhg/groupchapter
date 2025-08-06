@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Công cụ gộp chương truyện</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/docx/7.8.2/docx.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-100 font-sans">
+  <div class="container mx-auto p-4 max-w-4xl">
+    <h1 class="text-3xl font-bold text-center mb-6">Công cụ gộp chương truyện</h1>
+    
+    <!-- Tabs -->
+    <div class="tabs mb-4">
+      <button class="tab-btn px-4 py-2 bg-blue-500 text-white rounded-tl-md" data-tab="merge">📄 Gộp chương</button>
+      <button class="tab-btn px-4 py-2 bg-gray-300 text-black rounded-tr-md" data-tab="manage">📁 Quản lý chương</button>
+    </div>
+
+    <!-- Tab: Gộp chương -->
+    <div id="merge" class="tab-content">
+      <div class="mb-4">
+        <label for="storyName" class="block text-lg font-semibold">Tên truyện:</label>
+        <input id="storyName" type="text" placeholder="Nhập tên truyện" class="w-full p-2 border rounded">
+      </div>
+      <textarea id="rawTextInput" class="w-full h-48 p-2 border rounded" placeholder="Dán nội dung chương hoặc nhấn 'Nhập từ localStorage'"></textarea>
+      <div class="flex gap-2 my-4">
+        <button id="loadFromStorage" class="px-4 py-2 bg-green-500 text-white rounded">📤 Nhập từ localStorage</button>
+        <button id="preview" class="px-4 py-2 bg-blue-500 text-white rounded">📄 Xem trước</button>
+        <button id="saveToStorage" class="px-4 py-2 bg-purple-500 text-white rounded">📥 Lưu vào localStorage</button>
+        <button id="exportDocx" class="px-4 py-2 bg-orange-500 text-white rounded">⬇️ Xuất .docx</button>
+        <button id="exportZip" class="px-4 py-2 bg-red-500 text-white rounded">⬇️ Xuất .zip</button>
+      </div>
+      <div id="previewContent" class="border p-4 bg-white"></div>
+    </div>
+
+    <!-- Tab: Quản lý chương -->
+    <div id="manage" class="tab-content hidden">
+      <div id="chapterList" class="border p-4 bg-white"></div>
+    </div>
+  </div>
+
+  <script src="storage.js"></script>
+  <script src="ui.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
